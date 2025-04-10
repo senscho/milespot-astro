@@ -1,0 +1,26 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = mobileMenuButton.querySelector('.hidden');
+    const menuCloseIcon = mobileMenuButton.querySelector('.block');
+
+    let isMenuOpen = false;
+
+    mobileMenuButton.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      
+      // Toggle menu visibility
+      mobileMenu.classList.toggle('hidden');
+      
+      // Toggle icons
+      menuOpenIcon.classList.toggle('hidden');
+      menuOpenIcon.classList.toggle('block');
+      menuCloseIcon.classList.toggle('hidden');
+      menuCloseIcon.classList.toggle('block');
+      
+      // Update aria-expanded
+      mobileMenuButton.setAttribute('aria-expanded', isMenuOpen.toString());
+    });
+  });
+</script> 
