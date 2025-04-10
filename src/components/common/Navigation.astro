@@ -1,0 +1,25 @@
+---
+const navigation = [
+  { name: 'Blog', href: '/blog' },
+  { name: 'Wiki', href: '/wiki' },
+  { name: 'Community', href: '/community' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="hidden md:flex gap-6">
+  {navigation.map(item => (
+    <a
+      href={item.href}
+      class:list={[
+        'px-3 py-2 rounded-md text-sm font-medium',
+        currentPath.startsWith(item.href)
+          ? 'bg-gray-100 text-gray-900'
+          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+      ]}
+    >
+      {item.name}
+    </a>
+  ))}
+</nav> 

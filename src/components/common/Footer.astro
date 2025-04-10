@@ -1,0 +1,52 @@
+---
+const footerNavigation = {
+  main: [
+    { name: 'Blog', href: '/blog' },
+    { name: 'Wiki', href: '/wiki' },
+    { name: 'Community', href: '/community' }
+  ],
+  social: [
+    { name: 'GitHub', href: '#' },
+    { name: 'Twitter', href: '#' }
+  ]
+};
+---
+
+<footer class="bg-white border-t border-gray-200">
+  <div class="container mx-auto px-4 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-8 md:mb-0">
+        <h3 class="text-lg font-semibold text-gray-900">Milespot</h3>
+        <p class="mt-2 text-sm text-gray-600">Your Knowledge Hub</p>
+      </div>
+      
+      <div class="flex gap-8">
+        <div>
+          <h4 class="text-sm font-semibold text-gray-900 mb-4">Navigation</h4>
+          <ul class="space-y-3">
+            {footerNavigation.main.map(item => (
+              <li>
+                <a href={item.href} class="text-sm text-gray-600 hover:text-gray-900">
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-sm font-semibold text-gray-900 mb-4">Social</h4>
+          <ul class="space-y-3">
+            {footerNavigation.social.map(item => (
+              <li>
+                <a href={item.href} class="text-sm text-gray-600 hover:text-gray-900">
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> 
