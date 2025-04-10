@@ -20,7 +20,7 @@ import Footer from '../components/common/Footer.astro';
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
 			<!-- Mile Spot Card -->
 			<div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow flex flex-col h-full">
 				<div class="flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 mx-auto mb-6">
@@ -69,6 +69,70 @@ import Footer from '../components/common/Footer.astro';
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
 						</svg>
 					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Featured Posts -->
+		<div class="mb-16">
+			<h2 class="text-2xl font-bold text-gray-900 mb-6">Featured Posts</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<!-- Featured Post 1 -->
+				<div class="bg-white rounded-lg shadow-md overflow-hidden">
+					<div class="p-6">
+						<h3 class="text-lg font-semibold text-gray-900 mb-2">마일리지로 최고급 호텔 체험하기</h3>
+						<p class="text-gray-600 mb-4">최고의 마일리지 사용처와 팁을 알아봅니다.</p>
+						<a href="/blog/featured-post-1" class="text-primary-600 hover:text-primary-700">Read more →</a>
+					</div>
+				</div>
+				<!-- Featured Post 2 -->
+				<div class="bg-white rounded-lg shadow-md overflow-hidden">
+					<div class="p-6">
+						<h3 class="text-lg font-semibold text-gray-900 mb-2">신용카드 마일리지 최적화 가이드</h3>
+						<p class="text-gray-600 mb-4">마일리지 적립에 최적화된 신용카드 사용법.</p>
+						<a href="/blog/featured-post-2" class="text-primary-600 hover:text-primary-700">Read more →</a>
+					</div>
+				</div>
+				<!-- Featured Post 3 -->
+				<div class="bg-white rounded-lg shadow-md overflow-hidden">
+					<div class="p-6">
+						<h3 class="text-lg font-semibold text-gray-900 mb-2">항공사 마일리지 프로그램 비교</h3>
+						<p class="text-gray-600 mb-4">주요 항공사 마일리지 프로그램의 특징과 비교.</p>
+						<a href="/blog/featured-post-3" class="text-primary-600 hover:text-primary-700">Read more →</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Latest Posts -->
+		<div>
+			<h2 class="text-2xl font-bold text-gray-900 mb-6">Latest Posts</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<!-- Latest Post 1 -->
+				<div class="bg-white rounded-lg shadow-md overflow-hidden">
+					<div class="p-6">
+						<div class="flex items-center text-sm text-gray-500 mb-2">
+							<span>2024-03-20</span>
+							<span class="mx-2">•</span>
+							<span>마일리지 사용</span>
+						</div>
+						<h3 class="text-lg font-semibold text-gray-900 mb-2">마일리지로 즐기는 럭셔리 여행</h3>
+						<p class="text-gray-600 mb-4">마일리지를 활용한 고급 여행 계획과 팁.</p>
+						<a href="/blog/latest-post-1" class="text-primary-600 hover:text-primary-700">Read more →</a>
+					</div>
+				</div>
+				<!-- Latest Post 2 -->
+				<div class="bg-white rounded-lg shadow-md overflow-hidden">
+					<div class="p-6">
+						<div class="flex items-center text-sm text-gray-500 mb-2">
+							<span>2024-03-19</span>
+							<span class="mx-2">•</span>
+							<span>마일리지 적립</span>
+						</div>
+						<h3 class="text-lg font-semibold text-gray-900 mb-2">신용카드 마일리지 적립 전략</h3>
+						<p class="text-gray-600 mb-4">효율적인 마일리지 적립을 위한 신용카드 사용법.</p>
+						<a href="/blog/latest-post-2" class="text-primary-600 hover:text-primary-700">Read more →</a>
+					</div>
 				</div>
 			</div>
 		</div>
