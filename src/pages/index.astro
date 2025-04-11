@@ -2,6 +2,20 @@
 import RootLayout from '../layouts/RootLayout.astro';
 import Header from '../components/common/Header.astro';
 import Footer from '../components/common/Footer.astro';
+import { getFeaturedPosts, getLatestPosts } from '../lib/strapi';
+import type { Post } from '../lib/types';
+
+let featuredPosts: Post[] = [];
+let latestPosts: Post[] = [];
+
+try {
+	featuredPosts = await getFeaturedPosts();
+	latestPosts = await getLatestPosts();
+	console.log('Featured Posts:', featuredPosts);
+	console.log('Latest Posts:', latestPosts);
+} catch (error) {
+	console.error('Error fetching posts:', error);
+}
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -77,30 +91,26 @@ import Footer from '../components/common/Footer.astro';
 		<div class="mb-16">
 			<h2 class="text-2xl font-bold text-gray-900 mb-6">Featured Posts</h2>
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-				<!-- Featured Post 1 -->
-				<div class="bg-white rounded-lg shadow-md overflow-hidden">
-					<div class="p-6">
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">마일리지로 최고급 호텔 체험하기</h3>
-						<p class="text-gray-600 mb-4">최고의 마일리지 사용처와 팁을 알아봅니다.</p>
-						<a href="/blog/featured-post-1" class="text-primary-600 hover:text-primary-700">Read more →</a>
+				{featuredPosts && featuredPosts.length > 0 ? (
+					featuredPosts.map((post) => (
+						<div class="bg-white rounded-lg shadow-md overflow-hidden">
+							<div class="p-6">
+								<div class="flex items-center text-sm text-gray-500 mb-2">
+									<span>{post?.attributes?.publishedDate || 'No date'}</span>
+								</div>
+								<h3 class="text-lg font-semibold text-gray-900 mb-2">{post?.attributes?.title || 'Untitled'}</h3>
+								<p class="text-gray-600 mb-4">{post?.attributes?.content?.substring(0, 150) || 'No content available'}...</p>
+								<a href={`/blog/${post?.attributes?.slug || post?.id}`} class="text-primary-600 hover:text-primary-700">
+									Read more →
+								</a>
+							</div>
+						</div>
+					))
+				) : (
+					<div class="col-span-3 text-center py-8 text-gray-500">
+						No featured posts available yet
 					</div>
-				</div>
-				<!-- Featured Post 2 -->
-				<div class="bg-white rounded-lg shadow-md overflow-hidden">
-					<div class="p-6">
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">신용카드 마일리지 최적화 가이드</h3>
-						<p class="text-gray-600 mb-4">마일리지 적립에 최적화된 신용카드 사용법.</p>
-						<a href="/blog/featured-post-2" class="text-primary-600 hover:text-primary-700">Read more →</a>
-					</div>
-				</div>
-				<!-- Featured Post 3 -->
-				<div class="bg-white rounded-lg shadow-md overflow-hidden">
-					<div class="p-6">
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">항공사 마일리지 프로그램 비교</h3>
-						<p class="text-gray-600 mb-4">주요 항공사 마일리지 프로그램의 특징과 비교.</p>
-						<a href="/blog/featured-post-3" class="text-primary-600 hover:text-primary-700">Read more →</a>
-					</div>
-				</div>
+				)}
 			</div>
 		</div>
 
@@ -108,32 +118,28 @@ import Footer from '../components/common/Footer.astro';
 		<div>
 			<h2 class="text-2xl font-bold text-gray-900 mb-6">Latest Posts</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-				<!-- Latest Post 1 -->
-				<div class="bg-white rounded-lg shadow-md overflow-hidden">
-					<div class="p-6">
-						<div class="flex items-center text-sm text-gray-500 mb-2">
-							<span>2024-03-20</span>
-							<span class="mx-2">•</span>
-							<span>마일리지 사용</span>
+				{latestPosts && latestPosts.length > 0 ? (
+					latestPosts.map((post) => (
+						<div class="bg-white rounded-lg shadow-md overflow-hidden">
+							<div class="p-6">
+								<div class="flex items-center text-sm text-gray-500 mb-2">
+									<span>{post?.attributes?.publishedDate || 'No date'}</span>
+									<span class="mx-2">•</span>
+									<span>{post?.attributes?.locale || 'No category'}</span>
+								</div>
+								<h3 class="text-lg font-semibold text-gray-900 mb-2">{post?.attributes?.title || 'Untitled'}</h3>
+								<p class="text-gray-600 mb-4">{post?.attributes?.content?.substring(0, 150) || 'No content available'}...</p>
+								<a href={`/blog/${post?.attributes?.slug || post?.id}`} class="text-primary-600 hover:text-primary-700">
+									Read more →
+								</a>
+							</div>
 						</div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">마일리지로 즐기는 럭셔리 여행</h3>
-						<p class="text-gray-600 mb-4">마일리지를 활용한 고급 여행 계획과 팁.</p>
-						<a href="/blog/latest-post-1" class="text-primary-600 hover:text-primary-700">Read more →</a>
+					))
+				) : (
+					<div class="col-span-2 text-center py-8 text-gray-500">
+						No posts available yet
 					</div>
-				</div>
-				<!-- Latest Post 2 -->
-				<div class="bg-white rounded-lg shadow-md overflow-hidden">
-					<div class="p-6">
-						<div class="flex items-center text-sm text-gray-500 mb-2">
-							<span>2024-03-19</span>
-							<span class="mx-2">•</span>
-							<span>마일리지 적립</span>
-						</div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">신용카드 마일리지 적립 전략</h3>
-						<p class="text-gray-600 mb-4">효율적인 마일리지 적립을 위한 신용카드 사용법.</p>
-						<a href="/blog/latest-post-2" class="text-primary-600 hover:text-primary-700">Read more →</a>
-					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	</div>

@@ -2,8 +2,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
     const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (!mobileMenuButton || !mobileMenu) {
+      console.error('Mobile menu elements not found');
+      return;
+    }
+
     const menuOpenIcon = mobileMenuButton.querySelector('.hidden');
     const menuCloseIcon = mobileMenuButton.querySelector('.block');
+    
+    if (!menuOpenIcon || !menuCloseIcon) {
+      console.error('Menu icons not found');
+      return;
+    }
 
     let isMenuOpen = false;
 
