@@ -1,0 +1,24 @@
+---
+import type { Post } from '../lib/types';
+
+interface Props {
+	post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+	<div class="p-6">
+		<div class="flex items-center text-sm text-gray-500 mb-2">
+			<span>{post?.publishedDate || 'No date'}</span>
+			<span class="mx-2">•</span>
+			<span>{post?.locale || 'No category'}</span>
+		</div>
+		<h3 class="text-lg font-semibold text-gray-900 mb-2">{post?.title || 'Untitled'}</h3>
+		<p class="text-gray-600 mb-4">{post?.content?.substring(0, 150) || 'No content available'}...</p>
+		<a href={`/blog/${post?.slug || post?.id}`} class="text-primary-600 hover:text-primary-700">
+			Read more →
+		</a>
+	</div>
+</div> 
