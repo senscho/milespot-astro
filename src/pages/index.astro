@@ -92,7 +92,7 @@ try {
 			<!-- Featured Posts -->
 			<div class="mb-16">
 				<h2 class="text-2xl font-bold text-gray-900 mb-6">Featured Posts</h2>
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 					{featuredPosts.map((post) => (
 						<PostCard post={post} />
 					))}
@@ -103,13 +103,13 @@ try {
 		<!-- Latest Posts -->
 		<div>
 			<h2 class="text-2xl font-bold text-gray-900 mb-6">Latest Posts</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 				{latestPosts && latestPosts.length > 0 ? (
 					latestPosts.map((post) => (
 						<PostCard post={post} />
 					))
 				) : (
-					<div class="col-span-2 text-center py-8 text-gray-500">
+					<div class="col-span-full text-center py-8 text-gray-500">
 						No posts available yet
 					</div>
 				)}
