@@ -1,4 +1,5 @@
-export interface PostAttributes {
+export interface Post {
+  id: number;
   documentId: string;
   title: string;
   content: string;
@@ -7,11 +8,6 @@ export interface PostAttributes {
   createdAt: string;
   updatedAt: string;
   locale: string;
-}
-
-export interface Post {
-  id: number;
-  attributes: PostAttributes;
 }
 
 export interface StrapiResponse<T> {
